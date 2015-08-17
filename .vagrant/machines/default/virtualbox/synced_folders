@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/weddinger":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/weddinger","hostpath":"/home/rob/other/weddinger","disabled":false},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/rob/other/weddinger","disabled":false}}}

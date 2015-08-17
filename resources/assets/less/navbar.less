@@ -1,0 +1,22 @@
+.main-nav{
+    background-color: @dark-primary-color;
+    border:none;
+    border-radius:0px;
+    .navbar-brand{
+        color:@accent;
+        font-size:24px;
+        &:hover{
+            color:darken(@accent, 10%);
+        }
+    }
+    .navbar-nav{
+        li{
+            a{
+                color:@accent;
+                &:hover{
+                    color:darken(@accent, 10%);
+                }
+            }
+        }
+    }
+}

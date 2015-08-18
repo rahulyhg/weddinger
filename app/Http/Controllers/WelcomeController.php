@@ -38,6 +38,6 @@ class WelcomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard.dashboard');
+        return redirect()->route('event.index');
     }
 }

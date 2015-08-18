@@ -13,9 +13,14 @@
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
-]);
+    ]);
 
 
 Route::get('/', 'WelcomeController@index');
 
 
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::resource('event','EventController');
+
+});

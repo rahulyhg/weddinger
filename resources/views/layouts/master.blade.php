@@ -20,10 +20,14 @@
         @include('layouts.navbars.navbar')
     
         <div class="container main-container">
+            @include('layouts._messages')
             @yield('content')
         </div>
         
-        <script type="text/javascript" src="/js/vendor.js"/>
+        <script type="text/javascript" src="/js/vendor.js"></script>
+        @include('layouts.scripts')
+        @yield('scripts')
+        
         <script type="text/javascript">
             $.ajaxSetup({
                 headers: {
@@ -31,7 +35,6 @@
                 }
             });
         </script>
-        @include('layouts.scripts')
-        @yield('scripts')
+
     </body>
 </html>

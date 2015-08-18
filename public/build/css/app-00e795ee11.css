@@ -1,0 +1,97 @@
+.main-nav {
+  background-color: #303f9f;
+  border: none;
+  border-radius: 0px;
+}
+.main-nav .navbar-brand {
+  color: #ffc107;
+  font-size: 24px;
+}
+.main-nav .navbar-brand:hover {
+  color: #d39e00;
+}
+.main-nav .navbar-nav li a {
+  color: #ffc107;
+}
+.main-nav .navbar-nav li a:hover {
+  color: #d39e00;
+}
+.dashboard-tabs {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+.dashboard-tabs .tab {
+  max-height: 350px;
+  background-color: #3f51b5;
+  float: left;
+  min-height: 1px;
+  margin: 10px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 5px 5px 10px #888;
+  border: 1px solid #3849a2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.dashboard-tabs .tab:hover {
+  margin-top: -5px;
+  background-color: #3b4caa;
+}
+.dashboard-tabs .tab .tab-icon {
+  float: left;
+}
+.dashboard-tabs .tab .tab-icon .icon-circle {
+  background-color: #ffc107;
+  border-radius: 50%;
+  width: 5em;
+  height: 5em;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+.dashboard-tabs .tab .tab-icon .icon-circle i {
+  font-size: 2.5em;
+  color: #fff;
+}
+.dashboard-tabs .tab .tab-text {
+  float: right;
+  color: #fff;
+  font-size: 3em;
+}
+.event-list tbody tr:nth-child(even) {
+  background-color: #c5cae9;
+}
+.event-list tbody tr:nth-child(even) td {
+  color: accent;
+}
+.event-list tbody tr:nth-child(odd) {
+  background-color: #3f51b5;
+}
+.event-list tbody tr:nth-child(odd) td {
+  color: #fff;
+}
+body {
+  font-family: 'Bree Serif', serif;
+  background-color: #eaecf7;
+}
+.header-text {
+  border-bottom: 3px solid #b6b6b6;
+  color: #727272;
+}
+
+/*# sourceMappingURL=app.css.map */

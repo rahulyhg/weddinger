@@ -6,6 +6,7 @@ elixir.config.assetsPath = '';
 elixir.config.css.less.folder = '';
 elixir.config.css.sass.folder = '';
 elixir.config.js.folder = '';
+elixir.config.css.folder = '';
 /*
  |--------------------------------------------------------------------------
  | Elixir Asset Management
@@ -30,22 +31,17 @@ elixir.config.js.folder = '';
 
     //Main app styles
     mix.less('resources/assets/less/app.less');
+    versionedFiles.push('css/app.css');
 
     //Custom JS files
     var customScripts= [
+      'app.js'
     ];
 
-    if(elixir.config.production){
-        elixir.scriptsIn('resources/assets/js/');
-    }else{
-        versionedFiles.push('css/app.css');
-
-        for(var i in customScripts){
-            var scriptName = customScripts[i];
-            mix.scripts('resources/assets/js/'+scriptName,'public/js/'+scriptName );
-            mix.version('public/js/'+scriptName);
-            versionedFiles.push('public/js/'+scriptName);
-        }
+    for(var i in customScripts){
+        var scriptName = customScripts[i];
+        mix.scripts('resources/assets/js/'+scriptName,'public/js/'+scriptName );
+        versionedFiles.push('js/'+scriptName);
     }
 
     mix.version(versionedFiles);
@@ -57,16 +53,28 @@ elixir.config.js.folder = '';
      | Compiles all vendor styles and JavaScript
      |
      */
+    //Vendor SASS
+    mix.sass([
+        ], 'public/css/sass-compiled.css');
 
-    //Vendor Styles
+    //Vendor Less Styles
     mix.less([
         'bower_components/bootstrap/less/bootstrap.less',
-        'bower_components/font-awesome/less/font-awesome.less'
-        ], 'public/css/vendor.css');
+        'bower_components/font-awesome/less/font-awesome.less',
+        ], 'public/css/less-compiled.css');
+
+    //Combine Styles
+    mix.styles([
+        'public/css/sass-compiled.css',
+        'public/css/less-compiled.css',
+        'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'
+        ],'public/css/vendor.css');
 
     mix.scripts([
         'bower_components/jquery/dist/jquery.min.js',
-        'bower_components/bootstrap/dist/js/bootstrap.js'
+        'bower_components/moment/moment.js',
+        'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
         ], 'public/js/vendor.js');
 
     //Vendor Fonts

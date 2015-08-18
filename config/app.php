@@ -143,7 +143,7 @@ return [
         App\Providers\AppServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\HtmlServiceProvider::class,
         /*
         * 3rd Party Providers
         */
@@ -196,7 +196,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
         'Instagram' => Vinkla\Instagram\Facades\Instagram::class,
-
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
     ],
 
 ];

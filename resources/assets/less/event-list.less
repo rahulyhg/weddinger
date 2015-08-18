@@ -1,0 +1,26 @@
+.event-list{
+    tbody{
+        tr{
+            border-bottom:1px solid @divider-color;
+        }
+        tr:nth-child(even)
+        {
+            td{
+                color:@secondary-font;
+            }
+             &:hover{
+                background-color: darken(@ultra-light-primary, 5%);
+            }
+        }
+        tr:nth-child(odd)
+        {
+            background-color: @light-primary;
+            td{
+                color:#fff;
+            }
+            &:hover{
+                background-color: darken(@light-primary, 5%);
+            }
+        }
+    }
+}

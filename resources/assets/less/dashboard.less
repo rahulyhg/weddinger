@@ -1,27 +1,22 @@
-.header-text{
-    border-bottom: 3px solid @divider-color;
-    color: @secondary-font;
-}
-
 .dashboard-tabs{
     display:flex;
     align-items:center;
     justify-content: space-around;
     .tab{
         max-height: 350px;
-        background-color: @primary-color;
+        background-color: @brand-primary;
         float: left;
         min-height: 1px;
         margin: 10px;
         padding: 10px;
         cursor: pointer;
         box-shadow: 5px 5px 10px #888;
-        border:1px solid darken(@primary-color, 5%);
+        border:1px solid darken(@brand-primary, 5%);
 
         user-select: none;
         &:hover{
             margin-top:-5px;
-            background-color: darken(@primary-color, 3%);
+            background-color: darken(@brand-primary, 3%);
         }
 
         .tab-icon{

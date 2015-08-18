@@ -1,0 +1,1 @@
+{"version":3,"sources":["app.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA","file":"app.js","sourcesContent":["$(function(){\n    $(\".datetimepicker\").datetimepicker({\n        format:'D/M/YYYY h:mm A'\n    });\n});"],"sourceRoot":"/source/"}

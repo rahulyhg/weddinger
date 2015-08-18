@@ -16,7 +16,6 @@ class CreateEventsTable extends Migration
         {
             $table->increments('id');
             $table->string('event_name');
-            $table->integer('number_of_guests');
             $table->dateTime('event_start_date')->nullable();
             $table->dateTime('event_end_date')->nullable();
 

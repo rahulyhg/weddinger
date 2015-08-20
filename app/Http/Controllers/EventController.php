@@ -56,7 +56,7 @@ class EventController extends Controller
         $event = $this->event->newInstance();
 
         $input = $request->input();
-        
+
         $validator = $event->getValidator($input);
         if($validator->fails())
         {
@@ -80,7 +80,12 @@ class EventController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        if($event->user->id != Auth::user()->id)
+        {
+            return abort(404,"Sorry, We couldn't find what you're looking for");
+        }
+        return view('event.dashboard')->with(compact('event'));
     }
 
     /**
@@ -101,10 +106,25 @@ class EventController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(EventRequest $request, $id)
     {
-        //
-    }
+        $event = Event::findOrFail($id);
+
+        $input = $request->input();
+
+        $validator = $event->getValidator($input);
+        if($validator->fails())
+        {
+            return redirect()->back()->withInput()->withErrors();
+        }
+
+        $event->event_name= $input['event_name'];
+        $event->event_start_date = Carbon::createFromFormat('d/m/Y h:i A',$input['event_start_date']);
+        $event->event_end_date = Carbon::createFromFormat('d/m/Y h:i A',$input['event_end_date']);
+
+        $event->save();
+        return redirect()->route('event.show',[$event])->with('message','Event Updated');
+    }   
 
     /**
      * Remove the specified resource from storage.

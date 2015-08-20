@@ -10,14 +10,19 @@
             <a class="navbar-brand" href="#">weddinger</a>
         </div>
         <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav ">
+                @if(Auth::user())
+                <li><a href="{{ url('event') }}"><span class="glyphicon glyphicon-list"></span> Event List</a></li>
+                @endif    
+            </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            @if(Auth::user())
+            <ul class="nav navbar-nav navbar-right">
+                @if(Auth::user())
                 <li><a href="{{ url('auth/logout') }}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
-            @else
+                @else
                 <li><a href="{{ url('auth/login') }}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-            @endif
-        </ul>
+                @endif
+            </ul>
+        </div>
     </div>
-</div>
 </nav>

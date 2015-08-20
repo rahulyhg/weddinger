@@ -27,15 +27,17 @@ elixir.config.css.folder = '';
      |
      */
     //Versioned files
-    var versionedFiles = []; 
+    var versionedFiles = [
+      'css/app.css'
+    ]; 
 
     //Main app styles
     mix.less('resources/assets/less/app.less');
-    versionedFiles.push('css/app.css');
 
     //Custom JS files
     var customScripts= [
-      'app.js'
+      'app.js',
+      'event/dashboard.js'
     ];
 
     for(var i in customScripts){

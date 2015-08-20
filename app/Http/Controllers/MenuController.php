@@ -28,7 +28,6 @@ class MenuController extends Controller
      */
     public function index($eventId)
     {
-        $event
     }
 
     /**

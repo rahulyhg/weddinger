@@ -21,6 +21,10 @@ Route::get('/', 'WelcomeController@index');
 
 
 Route::group(['middleware' => 'auth'], function () {
+
     Route::resource('event','EventController');
+    Route::resource('event/{event_id}/menu','MenuController');
+
+
 
 });

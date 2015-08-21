@@ -3,8 +3,19 @@
 namespace App\Models;
 use App\BaseModel;
 use Illuminate\Database\Eloquent\Model;
-class Event extends BaseModel
+
+use Cviebrock\EloquentSluggable\SluggableInterface;
+use Cviebrock\EloquentSluggable\SluggableTrait;
+
+class Event extends BaseModel implements SluggableInterface
 {
+
+    use SluggableTrait;
+    protected $sluggable = [
+        'build_from' => 'event_name',
+        'save_to'    => 'slug',
+    ];
+
     protected $hidden =['user_id'];
     protected $fillable = ['event_name','event_start_date','event_end_date'];
     protected $rules= [

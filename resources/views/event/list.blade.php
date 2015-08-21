@@ -28,7 +28,7 @@
                     <td>{{ $event->event_start_date->format('l jS \\of F Y h:i:s A') }}</td>
                     <td>{{ $event->event_end_date->format('l jS \\of F Y h:i:s A') }}</td>
                     <td>{{ $event->guestList->count() }}</td>
-                    <td><a href="{{ route('event.show', [$event])}}" class="btn btn-primary">View</a></td>
+                    <td><a href="{{ route('event.show', [$event->slug])}}" class="btn btn-primary">View</a></td>
                 </tr>
                 @endforeach
             </tbody>

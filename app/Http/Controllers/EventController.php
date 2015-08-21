@@ -69,7 +69,7 @@ class EventController extends Controller
         $event->user_id = Auth::user()->id;
 
         $event->save();
-        return redirect()->route('event.show',[$event]);
+        return redirect()->route('event.show',[$event->slug]);
     }
 
     /**
@@ -78,9 +78,10 @@ class EventController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function show($eventSlug)
     {
-        $event = Event::findOrFail($id);
+        $event = Event::findBySlugOrIdOrFail($eventSlug);
+
         if($event->user->id != Auth::user()->id)
         {
             return abort(404,"Sorry, We couldn't find what you're looking for");
@@ -88,16 +89,6 @@ class EventController extends Controller
         return view('event.dashboard')->with(compact('event'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
@@ -123,7 +114,7 @@ class EventController extends Controller
         $event->event_end_date = Carbon::createFromFormat('d/m/Y h:i A',$input['event_end_date']);
 
         $event->save();
-        return redirect()->route('event.show',[$event])->with('message','Event Updated');
+        return redirect()->route('event.show',[$event->slug])->with('message','Event Updated');
     }   
 
     /**

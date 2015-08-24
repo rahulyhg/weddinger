@@ -22,12 +22,13 @@ Route::get('/', 'WelcomeController@index');
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('event',['as'=>'event','uses'=>'EventController@index']);
+    Route::get('event',['as'=>'event.index','uses'=>'EventController@index']);
     Route::get('event/create',['as'=>'event.create','uses'=>'EventController@create']);
     Route::post('event',['as'=>'event.store','uses'=>'EventController@store']);
-    Route::put('event/{event_slug}',['as'=>'event.update','uses'=>'EventController@update']);
-    Route::get('event/{event_slug}',['as'=>'event.show','uses'=>'EventController@show']);
+    Route::put('event/{eventSlug}',['as'=>'event.update','uses'=>'EventController@update']);
+    Route::get('event/{eventSlug}',['as'=>'event.show','uses'=>'EventController@show']);
 
+    Route::resource('event/{eventSlug}/menu','MenuController');
 
 
 

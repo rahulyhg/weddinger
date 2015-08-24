@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Models\Event;
+use App\Models\Menu;
+use App\Models\MenuItem;
+use App\Http\Requests\MenuRequest;
 class MenuController extends Controller
 {
 
@@ -15,10 +18,11 @@ class MenuController extends Controller
      *
      * @return void
      */
-    public function __construct(Event $event)
-    {
+     public function __construct(Event $event, Menu $menu)
+     {
         $this->middleware('auth');
         $this->event = $event;
+        $this->menu = $menu;
     }
     
     /**
@@ -26,8 +30,15 @@ class MenuController extends Controller
      *
      * @return Response
      */
-    public function index($eventId)
+    public function index($eventSlug)
     {
+        $event =Event::findBySlugOrIdOrFail($eventSlug); 
+        $menu = $event->menu;
+        if(is_null($menu))
+        {
+            return redirect()->route('event.{eventSlug}.menu.create',[$event->slug]);
+        }
+        return view('menu.index')->with(compact('event','menu'));
     }
 
     /**
@@ -35,9 +46,11 @@ class MenuController extends Controller
      *
      * @return Response
      */
-    public function create()
+    public function create($eventSlug)
     {
-        //
+        $event =Event::findBySlugOrIdOrFail($eventSlug); 
+        $menu = $this->menu->newInstance();
+        return view('menu.create')->with(compact('event','menu'));
     }
 
     /**
@@ -46,9 +59,14 @@ class MenuController extends Controller
      * @param  Request  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(MenuRequest $request)
     {
-        //
+        $menu = $this->menu;
+
+        $menu->fill($request->input());
+        $menu->save();
+        $event = $menu->event;
+        return redirect()->route('event.{eventSlug}.menu.index',[$event->slug])->with(compact('menu','event'));
     }
 
     /**
@@ -68,9 +86,9 @@ class MenuController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit($eventSlug)
     {
-        //
+
     }
 
     /**

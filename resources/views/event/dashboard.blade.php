@@ -52,7 +52,7 @@
                 </div>
                 <div class="tab-text">Guests</div>
             </a>
-            <a class=" tab">
+            <a class=" tab" href="{{ route('event.{eventSlug}.menu.index',[$event->slug]) }}">
                 <div class="tab-icon">
                     <div class="icon-circle">
                         <i class="fa fa-map"></i>

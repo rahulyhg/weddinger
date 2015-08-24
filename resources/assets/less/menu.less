@@ -1,0 +1,23 @@
+#editMenuTitleBtn{
+    font-size: 0.4em;
+    color: @secondary-font;
+    &:hover{
+        color: @primary-font;
+        cursor:pointer;
+    }
+}
+.menu-items-section{
+    display:flex;
+    align-items:center;
+    flex-wrap: wrap;
+    align-content:center;
+    .menu-item{
+        min-width: 30%;
+        background-color: @light-primary;
+        border:1px solid darken(@light-primary, 10%);
+        box-shadow: 5px 5px 10px #888;
+        padding:10px;
+        margin:10px;
+
+    }
+}

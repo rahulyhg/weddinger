@@ -20,7 +20,8 @@
     "jquery-ui": "~1.11.4",
     "font-awesome": "~4.4.0",
     "moment": "2.x",
-    "bootstrap-datetimepicker":"git@github.com:Eonasdan/bootstrap-datetimepicker.git#master"
+    "bootstrap-datetimepicker":"git@github.com:Eonasdan/bootstrap-datetimepicker.git#master",
+    "underscore":"~1.8.3"
   },
    "overrides": {
     "bootstrap": {

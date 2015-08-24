@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Menu extends BaseModel
 {
-	protected $fillable =['menu_name']; 
+	protected $fillable =['menu_name','event_id']; 
 
 	protected $rules = [
 	'menu_name'=>'required'

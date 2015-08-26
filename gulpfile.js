@@ -38,7 +38,8 @@ elixir.config.css.folder = '';
     //Custom JS files
     var customScripts= [
       'app.js',
-      'event/dashboard.js'
+      'event/dashboard.js',
+      'event/menu.js',
     ];
 
     for(var i in customScripts){
@@ -77,7 +78,8 @@ elixir.config.css.folder = '';
         'bower_components/jquery/dist/jquery.min.js',
         'bower_components/moment/moment.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
-        'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js'
+        'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+        'bower_components/underscor/underscore.js',
         ], 'public/js/vendor.js');
 
     //Vendor Fonts

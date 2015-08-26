@@ -17,7 +17,7 @@ class Menu extends BaseModel
         return $this->belongsTo('App\Models\Event');
     }
 
-    public function menuItems()
+    public function menu_items()
     {
         return $this->hasMany('App\Models\MenuItem');
     }

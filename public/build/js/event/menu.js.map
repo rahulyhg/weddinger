@@ -1,0 +1,1 @@
+{"version":3,"sources":["menu.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA","file":"menu.js","sourcesContent":["$(function(){\n\n});\n\nvar MenuEngine = {\n    init:function(){\n        this.initEventHandlers();\n    },\n    initEventHandlers:function(){\n        \n    }\n\n};\n\n"],"sourceRoot":"/source/"}

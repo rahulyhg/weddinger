@@ -70,47 +70,19 @@ class MenuController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($eventSlug)
-    {
-
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  Request  $request
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $eventSlug, $menuId)
     {
-        //
+        $this->menu = Menu::findOrFail($menuId);
+        $this->menu->fill($request->input());
+        $this->menu->save();
+        return redirect()->back()->with('message','Menu name updated');
+        //Do this homie
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

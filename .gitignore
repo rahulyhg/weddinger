@@ -7,3 +7,4 @@ Homestead.json
 .env.*.php
 .env.php
 .env
+/public/build

@@ -79,7 +79,7 @@ elixir.config.css.folder = '';
         'bower_components/moment/moment.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
         'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-        'bower_components/underscor/underscore.js',
+        'bower_components/underscore/underscore.js',
         ], 'public/js/vendor.js');
 
     //Vendor Fonts

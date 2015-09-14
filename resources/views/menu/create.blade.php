@@ -21,26 +21,4 @@
 </div>
 <button type="submit" class="btn btn-primary pull-right">Save</button>
 {!! Form::close() !!}
-<!-- <div class="row">
-    <div class="col-md-12">
-        <h3 class="header-text">Menu Items</h3>
-        <button class="btn btn-success"><i class="fa fa-plus"></i> Add Item</button>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12 menu-items-section" id="menuItems">
-        <div class="form-group menu-item">
-            <label class="control-label col-md-4">Item Name</label>
-            <div class="col-md-6">
-                <input type="text" id="menu_items[0]['name']" name="menu_items[0]['name']" class="form-control ">
-            </div>
-        </div>
-         <div class="form-group menu-item">
-            <label class="control-label col-md-4">Item Name</label>
-            <div class="col-md-6">
-                <input type="text" id="menu_items[1]['name']" name="menu_items[1]['name']" class="form-control ">
-            </div>
-        </div>
-    </div>
-</div> -->
 @endsection

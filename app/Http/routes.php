@@ -28,6 +28,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('event/{eventSlug}',['as'=>'event.update','uses'=>'EventController@update']);
     Route::get('event/{eventSlug}',['as'=>'event.show','uses'=>'EventController@show']);
     Route::resource('event/{eventSlug}/menu','MenuController',['except'=>['show','edit','destroy']]);
+    Route::resource('event/{eventSlug}/menu/menu-item','MenuItemController',['except'=>['show','edit','destroy','index']]);
 
 
 

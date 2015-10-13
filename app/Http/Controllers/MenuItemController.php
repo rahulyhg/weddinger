@@ -6,17 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Http\Requests\MenuItemRequest;
+use App\Models\MenuItem;
 class MenuItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return Response
-     */
-    public function index()
+    private $menuItem;
+
+    public function __construct(MenuItem $menuItem)
     {
-        //
+        $this->menuItem = $menuItem;
     }
 
     /**
@@ -32,46 +30,28 @@ class MenuItemController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  MenuItemRequest  $request
      * @return Response
      */
-    public function store(Request $request)
+    public function store(MenuItemRequest $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param  MenuItemRequest  $request
      * @param  int  $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(MenuItemRequest $request, $eventNameSlug, $menuItemId)
     {
-        //
+        $menuItem = MenuItem::findOrFail($menuItemId);
+        $menuItem->fill($request->input());
+        $menuItem->save();
+        return response()->json(['message'=>"success","menu-item"=>$menuItem]);
     }
 
     /**

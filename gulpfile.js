@@ -102,8 +102,9 @@ elixir(function(mix) {
     'public/**/*',
     'resources/views/**/*'
     ], {
-        proxy: 'localhost:8000',
-        reloadDelay: 1000
+        proxy: 'weddinger.app',
+        reloadDelay: 1000,
+        open:true
     });
 
 });

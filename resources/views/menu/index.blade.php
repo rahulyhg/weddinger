@@ -41,26 +41,28 @@
         <div class="col-md-12 menu-items-section form-horizontal">
             <?php $menuItems = $menu->menu_items ?>
             @for($i =0; $i < $menuItems->count(); ++$i)
-            <div class=" menu-item">
+            <div class="menu-item" id="{{$menuItems[$i]->id}}">
                 <div class="row item-info edit " >
                     <div class="form-group">
                         <label class="control-label col-md-4">Name</label>
                         <div class="col-md-6">
-                            <input type="text" id="menuItem_{{ $menuItems[$i]->id}}" original="{{ $menuItems[$i]->name }}" value="{{ $menuItems[$i]->name }}" class="form-control ">
+                            <input type="text" id="menuItem_{{ $menuItems[$i]->id }}" data-original="{{ $menuItems[$i]->name }}" value="{{ $menuItems[$i]->name }}" class="form-control menu-item-input">
+                            <small>Ordered by {{ $menuItems[$i]->number_of_times_ordered }} guests</small>
                         </div>
                     </div>
                 </div>
                 <div class="row item-info view">
-                    <h2>{{ $menuItems[$i]->name }}</h2>
+                    <h2 class="item-name-title">{{ $menuItems[$i]->name }}</h2>
+                    <small>Ordered by {{ $menuItems[$i]->number_of_times_ordered }} guests</small>
                 </div>
                 <div class=" row item-controls ">
                     <div class="viewControls">
-                        <button class="btn btn-success editItemButton" data-menu-item-id="menuItem_{{$menuItems[$i]->id}}"type="button">Edit</button>
-                        <button class="btn btn-danger deleteItemButton" data-menu-item-id="menuItem_{{$menuItems[$i]->id}}"type="button">Delete</button>
+                        <button class="btn btn-success editItemButton" data-menu-item-input="menuItem_{{ $menuItems[$i]->id}}" data-menu-item-id="{{$menuItems[$i]->id}}"type="button">Edit</button>
+                        <button class="btn btn-danger deleteItemButton" data-menu-item-input="menuItem_{{ $menuItems[$i]->id}}" data-menu-item-id="{{$menuItems[$i]->id}}"type="button">Delete</button>
                     </div>
                     <div class="editControls">
-                        <button class="btn btn-warning cancelEditButton" data-menu-item-id="menuItem_{{$menuItems[$i]->id}}"type="button">Cancel</button>
-                        <button class="btn btn-primary saveItemButton" data-menu-item-id="menuItem_{{$menuItems[$i]->id}}"type="button">Save</button>
+                        <button class="btn btn-warning cancelEditButton" data-menu-item-input="menuItem_{{ $menuItems[$i]->id}}" data-menu-item-id="{{$menuItems[$i]->id}}"type="button">Cancel</button>
+                        <button class="btn btn-primary saveItemButton" data-menu-item-input="menuItem_{{ $menuItems[$i]->id}}" data-menu-item-id="{{$menuItems[$i]->id}}"type="button">Save</button>
                     </div>
                 </div>
             </div>
@@ -69,5 +71,5 @@
     </div>
     @endsection
     @section('scripts')
-    <script type="text/javascript" src="/js/event/menu.js"></script>
+    <script type="text/javascript" src="{{ elixir('js/event/menu.js') }}"></script>
     @endsection

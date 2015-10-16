@@ -71,7 +71,8 @@ elixir.config.css.folder = '';
     mix.styles([
         'public/css/sass-compiled.css',
         'public/css/less-compiled.css',
-        'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'
+        'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css',
+        'bower_components/toastr/toastr.css',
         ],'public/css/vendor.css');
 
     mix.scripts([
@@ -80,6 +81,7 @@ elixir.config.css.folder = '';
         'bower_components/bootstrap/dist/js/bootstrap.js',
         'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
         'bower_components/underscore/underscore.js',
+        'bower_components/toastr/toastr.js',
         ], 'public/js/vendor.js');
 
     //Vendor Fonts

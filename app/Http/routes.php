@@ -27,8 +27,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('event',['as'=>'event.store','uses'=>'EventController@store']);
     Route::put('event/{eventSlug}',['as'=>'event.update','uses'=>'EventController@update']);
     Route::get('event/{eventSlug}',['as'=>'event.show','uses'=>'EventController@show']);
-    Route::resource('event/{eventSlug}/menu','MenuController',['except'=>['show','edit','destroy']]);
-    Route::resource('event/{eventSlug}/menu/menu-item','MenuItemController',['except'=>['show','edit','destroy','index']]);
+
+    Route::resource('event/{eventSlug}/menu','MenuController',['except'=>['show','edit']]);
+    Route::resource('event/{eventSlug}/menu/menu-item','MenuItemController',['except'=>['store','show','edit','index','destroy']]);
+    Route::delete('event/{eventSlug}/menu/{id}/menu-item/{menuItemId}',['as'=>'event.menu.menu-item.destroy','uses'=>'MenuItemController@destroy']);
+    Route::put('event/{eventSlug}/menu/{id}/menu-item',['as'=>'event.menu.menu-item.store','uses'=>'MenuItemController@store']);
 
 
 

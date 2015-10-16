@@ -20,7 +20,6 @@ class MenuController extends Controller
      */
      public function __construct(Event $event, Menu $menu)
      {
-        $this->middleware('auth');
         $this->event = $event;
         $this->menu = $menu;
     }

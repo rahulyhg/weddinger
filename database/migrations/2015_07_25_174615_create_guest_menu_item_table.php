@@ -19,7 +19,7 @@ class CreateGuestMenuItemTable extends Migration
             $table->foreign('guest_id')->references('id')->on('guests');
 
             $table->integer('menu_item_id')->unsigned();
-            $table->foreign('menu_item_id')->references('id')->on('menu_items');
+            $table->foreign('menu_item_id')->references('id')->on('menu_items')->onDelete('cascade');
             $table->timestamps();
         });
     }

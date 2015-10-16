@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MenuItemRequest;
 use App\Models\MenuItem;
+use App\Models\Menu;
 class MenuItemController extends Controller
 {
     private $menuItem;
@@ -17,15 +18,6 @@ class MenuItemController extends Controller
         $this->menuItem = $menuItem;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,9 +25,16 @@ class MenuItemController extends Controller
      * @param  MenuItemRequest  $request
      * @return Response
      */
-    public function store(MenuItemRequest $request)
+    public function store(MenuItemRequest $request, $eventSlug, $menuId)
     {
-        //
+        $this->menuItem->newInstance();
+        $menu = Menu::findOrFail($menuId);
+
+        $this->menuItem->fill($request->input());
+        $this->menuItem->menu_id = $menu->id;
+        $this->menuItem->save();
+        
+        return redirect()->route('event.{eventSlug}.menu.index',[$menu->event->slug])->with(compact('menu','event'));
     }
 
 
@@ -48,7 +47,7 @@ class MenuItemController extends Controller
      */
     public function update(MenuItemRequest $request, $eventNameSlug, $menuItemId)
     {
-        $menuItem = MenuItem::findOrFail($menuItemId);
+        $menuItem = $this->menuItem->findOrFail($menuItemId);
         $menuItem->fill($request->input());
         $menuItem->save();
         return response()->json(['message'=>"success","menu-item"=>$menuItem]);
@@ -60,8 +59,12 @@ class MenuItemController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy($eventSlug,$menuId,$menuItemId)
     {
-        //
+        $menuItem = $this->menuItem->findOrFail($menuItemId);
+        $itemName = $menuItem->name;
+        $menuItem->delete();
+        return response()->json(['message'=>$itemName.' deleted successfully']);
+        
     }
 }

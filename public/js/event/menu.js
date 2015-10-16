@@ -3,13 +3,15 @@ $(function(){
 });
 
 var MenuEngine = MenuEngine || {
+    menuId:'',
     init:function(){
+        this.menuId = $("#menuId").val();
         this.initEventHandlers();
     },
     initEventHandlers:function(){
         $(document).on('click','.editItemButton',function(){
-           MenuEngine.showEditFields(this);
-       });
+            MenuEngine.showEditFields(this);
+        });
 
         $(document).on('click','.cancelEditButton',function(){
             MenuEngine.cancelEdit(this);
@@ -18,6 +20,10 @@ var MenuEngine = MenuEngine || {
 
         $(document).on('click','.saveItemButton',function(){
             MenuEngine.saveChages(this);
+        });
+
+        $(document).on('click','.deleteItemButton',function(){
+            MenuEngine.deleteItem(this);
         });
     },
     showEditFields:function(eventButton){
@@ -40,7 +46,7 @@ var MenuEngine = MenuEngine || {
         $parentDiv = $eventButton.parents(".item-controls");
         $viewDiv = $parentDiv.siblings('.view');
         $editDiv = $parentDiv.siblings('.edit');
-        
+
         $editControlsDiv = $eventButton.parent();
         $viewControlsDiv = $eventButton.parent().siblings('.viewControls');
 
@@ -72,9 +78,10 @@ var MenuEngine = MenuEngine || {
         });
         request.done(function(msg){
             MenuEngine.updateMenuItem(msg['menu-item']);
+            toastr.success('Updated ' +msg['menu-item'].name);
         });
         request.fail(function(jqXHR, msg){
-            console.log(msg);
+            toastr.error(msg);
         });
     },
     updateMenuItem:function(menuItem){
@@ -82,8 +89,28 @@ var MenuEngine = MenuEngine || {
         $parentDiv.find('.item-name-title').html(menuItem.name);
         $("#menuItem_"+menuItem.id).attr('data-original',menuItem.name);
         //This is janky as all hell and should be fixed
-        //Switch the whole thing to a more OOP format
+        //Switch the whole thing to a more OOP format...later
         MenuEngine.hideEditFields($parentDiv.find('.saveItemButton'));
+    },
+    deleteItem:function(eventButton){
+        if(confirm("Are you sure you want to delete this item?")){
+            $eventButton = $(eventButton);
+            var menuItemId = $eventButton.attr('data-menu-item-id');
+            
+            var request = $.ajax({
+                url:"menu/"+ this.menuId +"/menu-item/"+menuItemId,
+                method:"DELETE",
+            });
+            request.done(function(jqXHR, msg){
+                $eventButton.parents('.menu-item').fadeOut(300,function(){
+                    $(this).remove();
+                });
+                toastr.success(jqXHR.message);
+            });
+            request.fail(function(jqXHR, msg){
+                toastr.error(msg);
+            });
+        }
     },
 
 };

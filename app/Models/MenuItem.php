@@ -9,9 +9,6 @@ use App\Models\GuestMenuItem;
 class MenuItem extends BaseModel
 {
 	protected $fillable =['name'];
-	protected $rules = [
-		'name'=>'required'
-	];
 	protected $appends =[
 		'menu_name',
 		'number_of_times_ordered'

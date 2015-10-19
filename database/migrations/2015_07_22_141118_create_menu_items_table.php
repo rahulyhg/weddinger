@@ -30,10 +30,6 @@ class CreateMenuItemsTable extends Migration
      */
     public function down()
     {
-        /*Schema::table('guests',function(Blueprint $table){
-            $table->dropForeign('guests_menu_item_id_foreign');
-        });*/
-        
         Schema::drop('menu_items');
     }
 }

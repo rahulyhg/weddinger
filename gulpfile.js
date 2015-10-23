@@ -1,6 +1,5 @@
 process.env.DISABLE_NOTIFIER = true;
 var elixir = require('laravel-elixir');
-require('laravel-elixir-browser-sync');
 
 //Reset these defaults so it doesn't append 'resources/[resourcetype]' to everything
 elixir.config.assetsPath = '';
@@ -29,7 +28,7 @@ elixir.config.css.folder = '';
      */
     //Versioned files
     var versionedFiles = [
-      'css/app.css'
+    'css/app.css'
     ]; 
 
     //Main app styles
@@ -37,15 +36,15 @@ elixir.config.css.folder = '';
 
     //Custom JS files
     var customScripts= [
-      'app.js',
-      'event/dashboard.js',
-      'event/menu.js',
+    'app.js',
+    'event/dashboard.js',
+    'event/menu.js',
     ];
 
     for(var i in customScripts){
-        var scriptName = customScripts[i];
-        mix.scripts('resources/assets/js/'+scriptName,'public/js/'+scriptName );
-        versionedFiles.push('js/'+scriptName);
+      var scriptName = customScripts[i];
+      mix.scripts('resources/assets/js/'+scriptName,'public/js/'+scriptName );
+      versionedFiles.push('js/'+scriptName);
     }
 
     mix.version(versionedFiles);
@@ -59,30 +58,30 @@ elixir.config.css.folder = '';
      */
     //Vendor SASS
     mix.sass([
-        ], 'public/css/sass-compiled.css');
+      ], 'public/css/sass-compiled.css');
 
     //Vendor Less Styles
     mix.less([
-        'bower_components/bootstrap/less/bootstrap.less',
-        'bower_components/font-awesome/less/font-awesome.less',
-        ], 'public/css/less-compiled.css');
+      'bower_components/bootstrap/less/bootstrap.less',
+      'bower_components/font-awesome/less/font-awesome.less',
+      ], 'public/css/less-compiled.css');
 
     //Combine Styles
     mix.styles([
-        'public/css/sass-compiled.css',
-        'public/css/less-compiled.css',
-        'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css',
-        'bower_components/toastr/toastr.css',
-        ],'public/css/vendor.css');
+      'public/css/sass-compiled.css',
+      'public/css/less-compiled.css',
+      'bower_components/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css',
+      'bower_components/toastr/toastr.css',
+      ],'public/css/vendor.css');
 
     mix.scripts([
-        'bower_components/jquery/dist/jquery.min.js',
-        'bower_components/moment/moment.js',
-        'bower_components/bootstrap/dist/js/bootstrap.js',
-        'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
-        'bower_components/underscore/underscore.js',
-        'bower_components/toastr/toastr.js',
-        ], 'public/js/vendor.js');
+      'bower_components/jquery/dist/jquery.min.js',
+      'bower_components/moment/moment.js',
+      'bower_components/bootstrap/dist/js/bootstrap.js',
+      'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
+      'bower_components/underscore/underscore.js',
+      'bower_components/toastr/toastr.js',
+      ], 'public/js/vendor.js');
 
     //Vendor Fonts
     mix.copy('bower_components/bootstrap/dist/fonts','public/fonts');
@@ -93,20 +92,22 @@ elixir.config.css.folder = '';
 
 
 
-});
+  });
 
 
 
 elixir(function(mix) {
 
-  mix.browserSync([
-    'app/**/*',
-    'public/**/*',
-    'resources/views/**/*'
-    ], {
-        proxy: 'weddinger.app',
-        reloadDelay: 1000,
-        open:true
-    });
+  mix.browserSync(
+  {
+    files:[
+      'app/**/*',
+      'public/**/*',
+      'resources/views/**/*'
+    ],
+    proxy: 'weddinger.app',
+    reloadDelay: 1000,
+    open:true
+  });
 
 });

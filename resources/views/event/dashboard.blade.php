@@ -68,7 +68,7 @@
                 </div>
                 <div class="tab-text">Table Seating</div>
             </a>
-            <a class=" tab">
+            <a class=" tab" href="{{ route('event.instastream',[$event->slug]) }}">
                 <div class="tab-icon">
                     <div class="icon-circle">
                         <i class="fa fa-instagram"></i>

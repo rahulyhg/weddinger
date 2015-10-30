@@ -14,17 +14,18 @@
     "test",
     "tests"
   ],
-   "dependencies": {
+  "dependencies": {
     "jquery": "1.11.2",
     "bootstrap": "~3.3.4",
     "jquery-ui": "~1.11.4",
     "font-awesome": "~4.4.0",
     "moment": "2.x",
-    "bootstrap-datetimepicker":"git@github.com:Eonasdan/bootstrap-datetimepicker.git#master",
-    "underscore":"~1.8.3",
-    "toastr":"~2.1.2"
+    "bootstrap-datetimepicker": "git@github.com:Eonasdan/bootstrap-datetimepicker.git#master",
+    "underscore": "~1.8.3",
+    "toastr": "~2.1.2",
+    "backbone.marionette": "marionette#~2.4.3"
   },
-   "overrides": {
+  "overrides": {
     "bootstrap": {
       "main": [
         "dist/js/bootstrap.js",

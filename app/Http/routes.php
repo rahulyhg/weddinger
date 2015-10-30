@@ -34,6 +34,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('event/{eventSlug}/menu/{id}/menu-item',['as'=>'event.menu.menu-item.store','uses'=>'MenuItemController@store']);
 
 
-
-
+    Route::get('event/{eventSlug}/instastream/',['as'=>'event.instastream','uses'=>'InstastreamController@index']);
+    Route::controller('event/{eventSlug}/instastream/hashtag','HashtagController',['postHashtag'=>'event.instastream.hashtag.create']);
 });

@@ -12,7 +12,8 @@ use App\Models\MenuItem;
 use App\Http\Requests\MenuRequest;
 class MenuController extends Controller
 {
-
+    private $event;
+    private $menu;
      /**
      * Create a new controller instance.
      *

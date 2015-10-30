@@ -12,6 +12,7 @@ use Auth;
 use Carbon\Carbon;
 class EventController extends Controller
 {
+    protected $event;
 
     /**
      * Create a new controller instance.

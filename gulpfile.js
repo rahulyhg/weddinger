@@ -39,6 +39,7 @@ elixir.config.css.folder = '';
     'app.js',
     'event/dashboard.js',
     'event/menu.js',
+    'event/instastream.js',
     ];
 
     for(var i in customScripts){
@@ -81,6 +82,8 @@ elixir.config.css.folder = '';
       'bower_components/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js',
       'bower_components/underscore/underscore.js',
       'bower_components/toastr/toastr.js',
+      'bower_components/backbone/backbone.js',
+      'bower_components/backbone.marionette/lib/backbone.marionette.js',
       ], 'public/js/vendor.js');
 
     //Vendor Fonts

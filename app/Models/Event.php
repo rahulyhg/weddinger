@@ -45,6 +45,11 @@ class Event extends BaseModel implements SluggableInterface
         return $this->hasOne('App\Models\Room');
     }
 
+    public function hashtags()
+    {
+        return $this->hasMany('App\Models\Hashtag');
+    }
+
 
     public function getDates()
     {
